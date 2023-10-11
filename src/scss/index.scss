@@ -1,0 +1,17 @@
+@import "variables";
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+body {
+    background: $blue-100;
+}
+
+#myForm {
+    padding: 20px;
+    background-color: $white;
+    margin: 40px auto;
+    max-width: 1000px;
+}
+
+.header-logo {
+    max-width: 150px;
+}

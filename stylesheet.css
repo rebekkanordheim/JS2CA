@@ -1,0 +1,19 @@
+.body-wrapper {
+    padding: 20px;
+}
+body {
+    background-color: var(--bs-light);
+}
+
+.form {
+    background-color: var(--bs-blue);
+    text-align: center;
+    padding: 50px 60px 70px; //
+    width: 90%; //
+    position: absolute; // 
+
+}
+label {
+    padding: 10px;
+    
+}

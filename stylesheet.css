@@ -22,11 +22,21 @@
     position: absolute;
 }
 
-#register {
+#register,
+#login {
     padding: 10px 15px;
     margin-top: 20px;
 }
 
 label {
     padding: 10px;
+}
+
+h1,
+a,
+text,
+.btn,
+.btn-dark
+ {
+    font-family: 'Nunito', sans-serif;
 }

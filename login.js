@@ -1,4 +1,4 @@
-/**
+/* *
  * Async function that logs in a user using the provided Noroff API
  * @param {string} url 
  * @param {any} userData 

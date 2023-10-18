@@ -18,7 +18,7 @@ async function fetchPostsAndCreateDivs() {
         titleElement.textContent = post.title;
   
         const bodyElement = document.createElement("p");
-        bodyElement.textContent = post.body;
+    bodyElement.textContent = post.body;
   
         postDiv.appendChild(titleElement);
         postDiv.appendChild(bodyElement);
@@ -30,5 +30,4 @@ async function fetchPostsAndCreateDivs() {
     }
   }
   
-  fetchPostsAndCreateDivs();
-  
+fetchPostsAndCreateDivs();

@@ -1,8 +1,4 @@
 {
-    "cSpell.words": [
-        "backgroundimage",
-        "feeditem",
-        "noroff",
-        "postfeed"
-    ]
+  "cSpell.words": ["backgroundimage", "feeditem", "noroff", "postfeed"],
+  "liveServer.settings.port": 5501
 }

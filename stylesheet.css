@@ -1,7 +1,7 @@
 .body-wrapper {
     padding: 20px;
     width: 100%;
-    min-height: 100vh; /* Change 'height' to 'min-height' */
+    min-height: 100vh;
     background-image: linear-gradient(rgba(255, 255, 255, 0.476), rgba(0, 0, 0, 0.668)), url(images/backgroundimage.jpg);
     background-position: center;
     background-size: cover;

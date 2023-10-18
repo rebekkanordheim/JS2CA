@@ -1,0 +1,1 @@
+The reason that the Noroff API hasn't been used in this project is because problems with authentication, so instead i used an API that was shown in the lessons throughout the JS 2 course. 

@@ -20,7 +20,7 @@ form.addEventListener('submit', function(event) {
             passwordInput.value = '';
 
             //Redirecting to feed after registration
-            window.location.href = 'index.html';
+            window.location.href = 'feed.html';
         }, 2000);
     } else {
         alert('Invalid email address. Please use a valid @noroff.no or @stud.noroff.no email address.');

@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const loginForm = document.getElementById("form");
+  // Select the form using the class name
+  const loginForm = document.querySelector(".login-form");
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -27,32 +28,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const loginUrl = "https://v2.api.noroff.dev/auth/login";
-      const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
 
-      const postData = {
+      // Login the user
+      const loginResponse = await fetch(loginUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": apiKey,
         },
         body: JSON.stringify(loginData),
-      };
+      });
 
-      const response = await fetch(loginUrl, postData);
-
-      if (response.ok) {
-        const data = await response.json();
+      if (loginResponse.ok) {
+        const loginData = await loginResponse.json();
         alert("Login successful!");
-        console.log(data);
 
-        // Store JWT and other data in localStorage
-        localStorage.setItem("accessToken", data.data.accessToken);
-        localStorage.setItem("user", JSON.stringify(data.data));
+        // Store JWT token in localStorage
+        localStorage.setItem("accessToken", loginData.data.accessToken);
 
-        // Redirect to the feed or another protected page
-        window.location.href = "../Feed/feed.html";
+        // Create API Key (if needed)
+        const createApiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
+        const apiKeyResponse = await fetch(createApiKeyUrl, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${loginData.data.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: "My API Key" }), // Optional name
+        });
+
+        if (apiKeyResponse.ok) {
+          const apiKeyData = await apiKeyResponse.json();
+          localStorage.setItem("apiKey", apiKeyData.data.key);
+
+          // Redirect to the feed or another protected page
+          window.location.href = "../Feed/feed.html";
+        } else {
+          throw new Error("Failed to create API Key.");
+        }
       } else {
-        const errorData = await response.json();
+        const errorData = await loginResponse.json();
         throw new Error(errorData.errors[0].message || "Login failed. Please try again.");
       }
     } catch (error) {

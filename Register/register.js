@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* document.addEventListener("DOMContentLoaded", () => {
   const registerForm = document.getElementById("form");
 
   registerForm.addEventListener("submit", async (event) => {
@@ -57,3 +57,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+ */

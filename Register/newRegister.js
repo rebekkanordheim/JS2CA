@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const registerForm = document.getElementById("form");
+  // Select the form using the class name
+  const registerForm = document.querySelector(".register-form");
 
   registerForm.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
@@ -35,27 +36,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
       const registerUrl = "https://v2.api.noroff.dev/auth/register";
-      const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
 
-      const postData = {
+      // Register the user
+      const registerResponse = await fetch(registerUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Noroff-API-Key": apiKey,
         },
         body: JSON.stringify(formData),
-      };
+      });
 
-      const response = await fetch(registerUrl, postData);
-
-      if (response.ok) {
-        const data = await response.json();
+      if (registerResponse.ok) {
+        const registerData = await registerResponse.json();
         alert("Registration successful!");
-        console.log(data);
-        // Optional: Redirect to login page or save token in localStorage
-        window.location.href = "../Login/login.html";
+
+        // Store JWT token in localStorage
+        localStorage.setItem("accessToken", registerData.data.accessToken);
+
+        // Create API Key
+        const createApiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
+        const apiKeyResponse = await fetch(createApiKeyUrl, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${registerData.data.accessToken}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name: "My API Key" }), // Optional name
+        });
+
+        if (apiKeyResponse.ok) {
+          const apiKeyData = await apiKeyResponse.json();
+          localStorage.setItem("apiKey", apiKeyData.data.key);
+
+          // Redirect to the feed or another protected page
+          window.location.href = "../Feed/feed.html";
+        } else {
+          throw new Error("Failed to create API Key.");
+        }
       } else {
-        const errorData = await response.json();
+        const errorData = await registerResponse.json();
         throw new Error(
           errorData.errors[0].message || "Registration failed. Please try again."
         );

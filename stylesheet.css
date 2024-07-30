@@ -1,55 +1,59 @@
 html,
 body {
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 h1 {
-    color: #FFF;
+  color: #fff;
 }
 .body-wrapper {
-    padding: 20px;
-    width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(116, 116, 116, 0.476), rgba(0, 0, 0, 0.931)), url(images/backgroundimage.jpg);
-    background-position: center;
-    background-size: cover;
-    position: relative;
-    font-family: 'Nunito', sans-serif;
+  padding: 20px;
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(116, 116, 116, 0.476), rgba(0, 0, 0, 0.931)),
+    url(images/backgroundimage.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  font-family: "Nunito", sans-serif;
 }
 
+.register-form,
+.login-form,
 form {
-    background-color: rgba(255, 255, 255, 0.431);
-    padding: 20px;
-    border-radius: 5px;
-    width: 70%;
-    margin: auto;
+  background-color: rgba(255, 255, 255, 0.431);
+  padding: 20px;
+  border-radius: 5px;
+  width: 70%;
+  margin: auto;
 }
 
 .form-input {
-    margin: auto;
-    margin-top: 20px;
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
+  margin: auto;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  padding: 10px;
 }
 
 .form-btn,
 .btn,
 .btn-dark {
-    padding: 10px;
-    background-color: #FFF;
-    border-radius: 5px;
-    margin: 10px;
-    color: black;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin: 10px;
+  color: black;
 }
 .form-btn:hover,
 .btn:hover,
 .btn-dark:hover {
-    background-color: black;
-    color: #FFF;
+  background-color: black;
+  color: #fff;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }

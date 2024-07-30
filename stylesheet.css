@@ -1,3 +1,10 @@
+html,
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
 .body-wrapper {
     padding: 20px;
     width: 100%;
@@ -6,15 +13,53 @@
     background-position: center;
     background-size: cover;
     position: relative;
+    font-family: 'Nunito', sans-serif;
 }
 
+form {
+    background-color: rgba(255, 255, 255, 0.431);
+    padding: 20px;
+    border-radius: 5px;
+    width: 70%;
+    margin: auto;
+}
 
+.form-input {
+    margin: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    padding: 10px;
+}
+
+.form-btn,
+.btn,
+.btn-dark {
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin: 20px;
+    color: black;
+}
+.form-btn:hover,
+.btn:hover,
+.btn-dark:hover {
+    background-color: black;
+    color: #FFF;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 
 footer {
     padding: 20px;
     color: #FFF;
     background-color: black;
     text-align: center;
 }
+
 footer a {
     color: #fff;
     text-transform: uppercase;
@@ -61,7 +106,24 @@ h1,
 a,
 text,
 .btn,
-.btn-dark
- {
+.btn-dark {
     font-family: 'Nunito', sans-serif;
 }
+
+.btn,
+.btn-dark {
+    padding: 10px;
+    background-color: #FFF;
+    border-radius: 5px;
+    margin: 20px;
+    color: black;
+}
+.btn:hover,
+.btn-dark:hover {
+    background-color: black;
+    color: #FFF;
+}
+
+a {
+text-decoration: none;
+} */

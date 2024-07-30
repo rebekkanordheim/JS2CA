@@ -14,9 +14,11 @@
 </head>
 <body>
   <div class="body-wrapper">
-    <a class="btn btn-dark" href="/">Home</a>
-    <a class="btn btn-dark" href="../Login/login.html">Log in</a>
-    <a class="btn btn-dark" href="../Feed/feed.html">Feed</a>
+    <nav class="navbar">
+      <a class="btn btn-dark" href="/">Home</a>
+      <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
+      <a class="btn btn-dark" id="feed-link" href="../Feed/feed.html">Feed</a>
+    </nav>
     <h1>Register</h1>
     <form class="register-form">
       <div>
@@ -63,5 +65,6 @@
     </form>
   </div>
   <script src="newRegister.js"></script>
+  <script src="../Auth/auth.js"></script>
 </body>
 </html>

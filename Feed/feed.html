@@ -15,13 +15,13 @@
 <body>
   <div class="body-wrapper">
     <a class="btn btn-dark" href="/">Home</a>
-    <a class="btn btn-dark" href="../Login/login.html">Log in</a>
-    <a class="btn btn-dark" href="../Register/register.html">Register</a>
-    <!-- <button id="logout-btn" class="btn btn-dark">Log out</button> -->
+    <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
+    <a class="btn btn-dark" id="register-link" href="../Register/register.html">Register</a>
     <h1>Feed</h1>
-    <div id="posts-container" class="posts-container">
-      <!-- Posts will be dynamically inserted here -->
-    </div>
+      <div id="posts-container" class="posts-container">
+        <!-- Posts will be dynamically inserted here -->
+      </div>
+    </nav>
   </div>
   <footer class="footer">
     <span>Footer Content</span>
@@ -29,5 +29,6 @@
   </footer>
   <script src="newFeed.js"></script>
   <script src="../Logout/newLogout.js"></script>
+  <script src="../Auth/auth.js"></script> <!-- This script handles hiding/showing links based on authentication status -->
 </body>
 </html>

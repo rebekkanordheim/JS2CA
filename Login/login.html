@@ -15,33 +15,37 @@
 <body>
   <div class="body-wrapper">
     <a class="btn btn-dark" href="/">Home</a>
-    <a class="btn btn-dark" href="../Register/register.html">Register</a>
-    <a class="btn btn-dark" href="../Feed/feed.html">Feed</a>
+    <a class="btn btn-dark" id="register-link" href="../Register/register.html">Register</a>  
+    <a class="btn btn-dark" id="feed-link" href="../Feed/feed.html">Feed</a>
     <h1>Login</h1>
     <form class="login-form">
-      <div>
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Your email"
-          class="form-input"
-        />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Your password"
-          class="form-input"
-        />
-      </div>
-      <button class="form-btn" type="submit">Log in</button>
-    </form>
+      
+      <form class="login-form">
+        <div>
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email"
+            class="form-input"
+          />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Your password"
+            class="form-input"
+          />
+        </div>
+        <button class="form-btn" type="submit">Log in</button>
+      </form>
+    </nav>
   </div>
   <script src="newLogin.js"></script>
+  <script src="../Auth/auth.js"></script>
 </body>
 </html>

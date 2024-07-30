@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Select the form using the class name
   const registerForm = document.querySelector(".register-form");
 
   registerForm.addEventListener("submit", async (event) => {
@@ -48,39 +47,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (registerResponse.ok) {
         const registerData = await registerResponse.json();
+        console.log("Registration successful:", registerData);
         alert("Registration successful!");
 
-        // Store JWT token in localStorage
-        localStorage.setItem("accessToken", registerData.data.accessToken);
-
-        // Create API Key
-        const createApiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
-        const apiKeyResponse = await fetch(createApiKeyUrl, {
-          method: "POST",
-          headers: {
-            Authorization: `Bearer ${registerData.data.accessToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ name: "My API Key" }), // Optional name
-        });
-
-        if (apiKeyResponse.ok) {
-          const apiKeyData = await apiKeyResponse.json();
-          localStorage.setItem("apiKey", apiKeyData.data.key);
-
-          // Redirect to the feed or another protected page
-          window.location.href = "../Feed/feed.html";
-        } else {
-          throw new Error("Failed to create API Key.");
-        }
+        // Redirect to the login page (API key creation happens here)
+        window.location.href = "../Login/login.html";
       } else {
         const errorData = await registerResponse.json();
+        console.error("Registration failed:", errorData);
         throw new Error(
-          errorData.errors[0].message || "Registration failed. Please try again."
+          errorData.errors[0]?.message || "Registration failed. Please try again."
         );
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error occurred:", error);
       alert(error.message || "Registration failed. Please try again.");
     }
   });

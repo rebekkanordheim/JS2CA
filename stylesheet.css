@@ -40,7 +40,8 @@ form {
 
 .form-btn,
 .btn,
-.btn-dark {
+.btn-dark,
+.footer-button {
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
@@ -49,11 +50,66 @@ form {
 }
 .form-btn:hover,
 .btn:hover,
-.btn-dark:hover {
+.btn-dark:hover,
+.footer-button:hover {
   background-color: black;
   color: #fff;
 }
 
 a {
   text-decoration: none;
+}
+
+.footer {
+  background-color: #fff;
+  color: var(--secondary-text);
+  padding: 10px;
+  text-align: left;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  z-index: 1;
+}
+
+
+/* POST */ /* Add these styles to your stylesheet.css */
+
+/* Default grid layout for large screens */
+#posts-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
+  gap: 20px; /* Space between posts */
+  padding: 20px;
+}
+
+/* Adjust layout for medium screens */
+@media (max-width: 1355px) and (min-width: 901px) {
+  #posts-container {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  }
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 900px) {
+  #posts-container {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+}
+
+/* Adjust margin and padding for better spacing */
+.post {
+  background-color: #ffffffbf;
+  border: 2px solid white;
+  color: var(--secondary-text);
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

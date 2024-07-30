@@ -1,91 +1,58 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const authMessage = document.getElementById("auth-message");
-  const postsContainer = document.getElementById("posts-container");
-  const paginationContainer = document.getElementById("pagination");
-  const apiKey = "YOUR_API_KEY"; // Replace with your actual API key
-  const accessToken = localStorage.getItem("accessToken"); // Assuming token is stored here after login
+document.addEventListener("DOMContentLoaded", async () => {
+  const accessToken = localStorage.getItem("accessToken"); // Retrieve the access token from local storage
+  const apiKey = localStorage.getItem("apiKey"); // Retrieve the API key from local storage
 
-  // Check for access token
   if (!accessToken || !apiKey) {
-    authMessage.style.display = "block";
-    postsContainer.style.display = "none";
-    paginationContainer.style.display = "none";
+    console.error("No access token or API key found. Please log in.");
     return;
   }
 
-  let currentPage = 1;
-  const postsPerPage = 10;
-
-  const fetchPosts = async (page = 1) => {
-    try {
-      const response = await fetch(
-        `https://v2.api.noroff.dev/social/posts?_author=true&_comments=true&_reactions=true&page=${page}`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "X-Noroff-API-Key": apiKey,
-          },
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch posts");
+  try {
+    const response = await fetch(
+      "https://v2.api.noroff.dev/social/posts?_author=true&_comments=true&_reactions=true&page=1",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`, // Include access token for authorization
+          "X-Noroff-API-Key": apiKey, // Include API key if required by the API
+          "Content-Type": "application/json",
+        },
       }
+    );
 
-      const { data: posts, meta } = await response.json();
-      displayPosts(posts);
-      displayPagination(meta);
-    } catch (error) {
-      console.error(error);
-      postsContainer.innerHTML = `<p>Error loading posts. Please try again later.</p>`;
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Posts data:", data); // Log data to check its structure
+
+      // Populate the posts container
+      const postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = ""; // Clear existing posts
+
+      data.data.forEach((post) => {
+        const postElement = document.createElement("div");
+        postElement.className = "post"; // Apply the post class
+        postElement.innerHTML = `
+          <h2>${post.title}</h2>
+          <p>${post.body}</p>
+          <small>Author: ${post.author.name}</small>
+        `;
+        postsContainer.appendChild(postElement);
+      });
+    } else {
+      const errorData = await response.json();
+      console.error("Failed to fetch posts:", errorData);
+      // Display an error message to the user
+      const postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = `<p>Failed to fetch posts: ${
+        errorData.errors[0].message || "Unknown error"
+      }</p>`;
     }
-  };
-
-  const displayPosts = (posts) => {
-    postsContainer.innerHTML = "";
-    posts.forEach((post) => {
-      const postElement = document.createElement("div");
-      postElement.className = "post";
-      postElement.innerHTML = `
-        <h2>${post.title}</h2>
-        <p>${post.body}</p>
-        ${
-          post.media
-            ? `<img src="${post.media.url}" alt="${post.media.alt}" class="post-image">`
-            : ""
-        }
-        <p><small>Posted by: ${post.author.name}</small></p>
-        <p><small>${post._count.comments} comments, ${
-        post._count.reactions
-      } reactions</small></p>
-      `;
-      postsContainer.appendChild(postElement);
-    });
-    postsContainer.style.display = "block";
-  };
-
-  const displayPagination = (meta) => {
-    paginationContainer.innerHTML = "";
-    if (meta.pageCount > 1) {
-      if (meta.previousPage) {
-        const prevButton = document.createElement("button");
-        prevButton.innerText = "Previous";
-        prevButton.className = "btn btn-dark";
-        prevButton.addEventListener("click", () => fetchPosts(meta.currentPage - 1));
-        paginationContainer.appendChild(prevButton);
-      }
-
-      if (meta.nextPage) {
-        const nextButton = document.createElement("button");
-        nextButton.innerText = "Next";
-        nextButton.className = "btn btn-dark";
-        nextButton.addEventListener("click", () => fetchPosts(meta.currentPage + 1));
-        paginationContainer.appendChild(nextButton);
-      }
-    }
-    paginationContainer.style.display = "block";
-  };
-
-  fetchPosts(currentPage);
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    // Display an error message to the user
+    const postsContainer = document.getElementById("posts-container");
+    postsContainer.innerHTML = `<p>Error fetching posts: ${
+      error.message || "Unknown error"
+    }</p>`;
+  }
 });

@@ -14,22 +14,16 @@
 </head>
 <body>
   <div class="body-wrapper">
-    <nav>
-      <a class="btn btn-dark" href="/">Home</a>
-      <a class="btn btn-dark" href="../Register/register.html">Register</a>
-      <a class="btn btn-dark" href="../Login/login.html">Log in</a>
-    </nav>
+    <a class="btn btn-dark" href="/">Home</a>
+    <a class="btn btn-dark" href="../Login/login.html">Log in</a>
+    <a class="btn btn-dark" href="../Register/register.html">Register</a>
+    <button id="logout-btn" class="btn btn-dark">Log out</button>
     <h1>Feed</h1>
-    <h2 id="auth-message" class="alert alert-warning" style="display:none;">
-      You need to be logged in to view the posts.
-    </h2>
-    <div id="posts-container" class="posts-container" style="display:none;">
-      <!-- Posts will be loaded here -->
-    </div>
-    <div id="pagination" class="pagination" style="display:none;">
-      <!-- Pagination controls will be loaded here -->
+    <div id="posts-container" class="posts-container">
+      <!-- Posts will be dynamically inserted here -->
     </div>
   </div>
   <script src="newFeed.js"></script>
+  <script src="../Logout/newLogout.js"></script> <!-- Include logout.js here -->
 </body>
 </html>

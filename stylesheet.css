@@ -1,12 +1,17 @@
-html,
-body {
+html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
+
+body {
+  padding-bottom: 60px; /* Ensure content isn't hidden under the footer */
+}
+
 h1 {
   color: #fff;
 }
+
 .body-wrapper {
   padding: 20px;
   width: 100%;
@@ -15,13 +20,10 @@ h1 {
     url(images/backgroundimage.jpg);
   background-position: center;
   background-size: cover;
-  position: relative;
   font-family: "Nunito", sans-serif;
 }
 
-.register-form,
-.login-form,
-form {
+.register-form, .login-form, form {
   background-color: rgba(255, 255, 255, 0.431);
   padding: 20px;
   border-radius: 5px;
@@ -38,20 +40,15 @@ form {
   padding: 10px;
 }
 
-.form-btn,
-.btn,
-.btn-dark,
-.footer-button {
+.form-btn, .btn, .btn-dark, .footer-button {
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
   margin: 10px;
   color: black;
 }
-.form-btn:hover,
-.btn:hover,
-.btn-dark:hover,
-.footer-button:hover {
+
+.form-btn:hover, .btn:hover, .btn-dark:hover, .footer-button:hover {
   background-color: black;
   color: #fff;
 }
@@ -65,16 +62,15 @@ a {
   color: var(--secondary-text);
   padding: 10px;
   text-align: left;
-  position: fixed;
+  position: fixed; /* Fixes the footer at the bottom of the viewport */
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
-  z-index: 1;
+  height: 60px; /* Match this height with the actual height of your footer */
+  z-index: 1; /* Ensure the footer stays on top of other content */
 }
-
 
 /* POST */ /* Add these styles to your stylesheet.css */
 

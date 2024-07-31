@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (response.ok) {
       const responseData = await response.json();
-      const post = responseData.data; 
+      const post = responseData.data;
 
       console.log("Post data:", post);
 
@@ -37,6 +37,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       const authorName = post.author ? post.author.name : "Unknown Author";
       const mediaUrl = post.media ? post.media.url : "";
       const mediaAlt = post.media ? post.media.alt : "Post image";
+
+      // Update the page title with the post title
+      document.title = post.title || "Post Details";
 
       postContainer.innerHTML = `
         <h2>${post.title || "Untitled Post"}</h2>

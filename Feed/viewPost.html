@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details</title>
+    <link rel="stylesheet" href="../stylesheet.css">
+    <script src="https://kit.fontawesome.com/775e56e9e6.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="body-wrapper">
+        <nav class="navbar">
+            <a class="btn btn-dark" href="/">Home</a>
+            <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
+            <a class="btn btn-dark" id="register-link" href="../Register/register.html">Register</a>
+        </nav>
+        <h1>Post Details</h1>
+        <div id="post" class="post">
+            <!-- Post details will be dynamically inserted here -->
+        </div>
+    </div>
+    <footer class="footer">
+        <span><p>© Rebekka Nordheim 2024</p></span>
+        <button id="logout-btn-footer" class="btn btn-dark">Log out</button>
+        <button id="create-post-btn" class="btn btn-dark" style="display: none">
+            <a href="../Feed/createNewPost.html" class="createPostButton">Create new post</a>
+        </button>
+    </footer>
+    <script src="viewPost.js"></script>
+    <script src="../Logout/newLogout.js"></script>
+    <script src="../Auth/auth.js"></script>
+</body>
+</html>

@@ -1,15 +1,14 @@
-html,
-body {
+html, body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
 }
 
 body {
-  padding-bottom: 60px; /* Ensure content isn't hidden under the footer */
+  padding-bottom: 60px;
 }
 
-h1 {
+h1, .page-title {
   color: #fff;
   text-align: center;
 }
@@ -18,65 +17,112 @@ h1 {
   padding: 20px;
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(116, 116, 116, 0.476), rgba(0, 0, 0, 0.931)),
-    url(images/backgroundimage.jpg);
+  background-image: linear-gradient(rgba(116, 116, 116, 0.476), rgba(0, 0, 0, 0.931)), url(images/backgroundimage.jpg);
   background-position: center;
   background-size: cover;
   font-family: "Nunito", sans-serif;
 }
 
-.register-form,
-.login-form,
-form {
+.navbar, .search-container, .profile-header, .profile-bio-container {
+  margin-bottom: 20px;
+}
+
+.content-container, .posts-container, .register-form, .login-form, form {
   background-color: rgba(255, 255, 255, 0.431);
   padding: 20px;
   border-radius: 5px;
-  width: 70%;
   margin: auto;
 }
 
+.content-container, .posts-container {
+  max-width: 800px;
+}
+
+form, .register-form, .login-form {
+  width: 70%;
+}
+
 form label {
-  display: block; /* Ensures label is above the input */
-  margin-bottom: 5px; /* Space between label and input */
-  color: #333; /* Optional: Color for the label text */
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
 }
 
 .form-input {
-  margin-bottom: 15px; /* Space between input fields */
+  margin-bottom: 15px;
   border-radius: 5px;
-  border: 1px solid #ccc; /* Border color for better visibility */
+  border: 1px solid #ccc;
   padding: 10px;
-  width: 100%; /* Full width of the form container */
+  width: 100%;
 }
 
-.button,
-.form-btn,
-.btn,
-.btn-dark {
-  padding: 10px;
-  background-color: #fff;
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px auto;
+}
+
+.profile-bio {
+  font-size: 1em;
+  color: #333;
+}
+
+.search-container {
+  display: flex;
+  align-items: baseline;
+}
+
+.search-container input {
+  width: calc(100% - 100px);
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.search-container button {
+  display: inline-block;
+}
+
+.posts-container, #posts-container {
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.posts-container {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#posts-container {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Adjust layout for medium screens */
+@media (max-width: 1355px) and (min-width: 901px) {
+  .posts-container, #posts-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Adjust layout for small screens */
+@media (max-width: 900px) {
+  .posts-container, #posts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.post-container, .post {
+  background-color: #ffffffbf;
+  border: 2px solid white;
+  color: var(--secondary-text);
   border-radius: 5px;
-  margin: 10px;
-  color: black;
-  text-decoration: none; /* Ensure links look like buttons */
-  display: inline-block; /* Ensure buttons wrap content properly */
-  text-align: center;
-  border: 1px solid transparent; /* Prevent layout shift on hover */
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-/* Hover effects for buttons */
-.button:hover,
-.form-btn:hover,
-.btn:hover,
-.btn-dark:hover {
-  background-color: black;
-  color: #fff;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer {
@@ -84,67 +130,35 @@ a {
   color: var(--secondary-text);
   padding: 10px;
   text-align: left;
-  position: fixed; /* Fixes the footer at the bottom of the viewport */
+  position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px; /* Match this height with the actual height of your footer */
-  z-index: 1; /* Ensure the footer stays on top of other content */
+  height: 60px;
+  z-index: 1;
 }
 
-/* POST */
-/* searchbar */
-.search-container {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: baseline;
+a {
+  text-decoration: none;
 }
 
-.search-container input {
-    width: calc(100% - 100px);
-    display: inline-block;
-    margin-right: 10px;
-}
-
-.search-container button {
-    display: inline-block;
-}
-/* Default grid layout for large screens */
-#posts-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns by default */
-  gap: 20px; /* Space between posts */
-  padding: 20px;
-}
-
-/* Adjust layout for medium screens */
-@media (max-width: 1355px) and (min-width: 901px) {
-  #posts-container {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
-    padding: 20px;
-  }
-}
-
-/* Adjust layout for small screens */
-@media (max-width: 900px) {
-  #posts-container {
-    grid-template-columns: 1fr; /* 1 column */
-    padding: 20px;
-  }
-}
-
-/* Adjust margin and padding for better spacing */
-.post {
-  background-color: #ffffffbf;
-  border: 2px solid white;
-  color: var(--secondary-text);
+.button, .btn, .btn-dark, .form-btn {
+  padding: 10px;
+  background-color: #fff;
   border-radius: 5px;
-  padding: 20px;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 10px;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button:hover, .btn:hover, .btn-dark:hover, .form-btn:hover {
+  background-color: black;
+  color: #fff;
+  cursor: pointer;
 }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create New Post</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../stylesheet.css">
+  <script src="https://kit.fontawesome.com/775e56e9e6.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="body-wrapper">
+    <a class="btn btn-dark" href="/">Home</a>
+    <a class="btn btn-dark" href="../Feed/feed.html">Feed</a>
+    <h1>Create New Post</h1>
+    <form id="create-post-form" class="create-post-form">
+      <div>
+        <label for="title">Title:</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="Post title"
+          class="form-input"
+          required
+        />
+      </div>
+      <div>
+        <label for="body">Body:</label>
+        <textarea
+          id="body"
+          name="body"
+          placeholder="Post body"
+          class="form-input"
+          required
+        ></textarea>
+      </div>
+      <div>
+        <label for="mediaUrl">Media URL (optional):</label>
+        <input
+          type="text"
+          id="mediaUrl"
+          name="mediaUrl"
+          placeholder="Media URL"
+          class="form-input"
+        />
+      </div>
+      <button class="form-btn" type="submit">Publish</button>
+    </form>
+  </div>
+  <script src="createNewPost.js"></script>
+</body>
+</html>

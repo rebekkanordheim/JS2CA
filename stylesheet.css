@@ -107,6 +107,7 @@ a {
 @media (max-width: 1355px) and (min-width: 901px) {
   #posts-container {
     grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    padding: 20px;
   }
 }
 
@@ -114,6 +115,7 @@ a {
 @media (max-width: 900px) {
   #posts-container {
     grid-template-columns: 1fr; /* 1 column */
+    padding: 20px;
   }
 }
 

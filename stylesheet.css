@@ -95,7 +95,22 @@ a {
 }
 
 /* POST */
+/* searchbar */
+.search-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: baseline;
+}
 
+.search-container input {
+    width: calc(100% - 100px);
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.search-container button {
+    display: inline-block;
+}
 /* Default grid layout for large screens */
 #posts-container {
   display: grid;

@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   try {
     const response = await fetch(
-      "https://v2.api.noroff.dev/social/posts?_author=true&_comments=true&_reactions=true&page=1",
+      "https://v2.api.noroff.dev/social/posts?_author=true&_comments=true&_reactions=true&page=1&sort=created",
       {
         method: "GET",
         headers: {

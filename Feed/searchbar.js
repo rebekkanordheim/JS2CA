@@ -1,8 +1,33 @@
-// searchbar.js
-
+/**
+ * Initializes the search functionality and displays posts based on search input.
+ * Runs when the DOM content is fully loaded.
+ * @function
+ * @async
+ * @returns {void}
+ * @throws {Error} Throws an error if fetching posts fails or an unexpected error occurs.
+ * @example
+ * // Automatically fetches and displays posts, and sets up the search functionality when the DOM content is loaded.
+ * document.addEventListener("DOMContentLoaded", async () => {
+ *     // Initialization code here
+ * });
+ */
 document.addEventListener("DOMContentLoaded", async () => {
+  /**
+   * Retrieves the access token from localStorage.
+   * @type {string|null}
+   */
   const accessToken = localStorage.getItem("accessToken");
+
+  /**
+   * Retrieves the API key from localStorage.
+   * @type {string|null}
+   */
   const apiKey = localStorage.getItem("apiKey");
+
+  /**
+   * Reference to the posts container element.
+   * @type {HTMLElement|null}
+   */
   const postsContainer = document.getElementById("posts-container");
 
   if (!accessToken || !apiKey) {
@@ -10,8 +35,22 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
+  /**
+   * Array to hold the fetched posts data.
+   * @type {Array<Object>}
+   */
   let postsData = [];
 
+  /**
+   * Fetches posts from the API and stores them in the postsData array.
+   * @async
+   * @function
+   * @returns {void}
+   * @throws {Error} Throws an error if fetching posts fails.
+   * @example
+   * // Fetches posts and displays them.
+   * await fetchPosts();
+   */
   const fetchPosts = async () => {
     try {
       const response = await fetch(
@@ -19,8 +58,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         {
           method: "GET",
           headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "X-Noroff-API-Key": apiKey,
+            Authorization: `Bearer ${accessToken}`, // Include access token for authorization
+            "X-Noroff-API-Key": apiKey, // Include API key if required by the API
             "Content-Type": "application/json",
           },
         }
@@ -45,13 +84,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   };
 
+  /**
+   * Displays the posts in the posts container.
+   * @function
+   * @param {Array<Object>} posts - Array of post objects to be displayed.
+   * @returns {void}
+   * @example
+   * // Displays a list of posts.
+   * displayPosts(postsData);
+   */
   const displayPosts = (posts) => {
     postsContainer.innerHTML = ""; // Clear existing posts
 
     posts.forEach((post) => {
+      /**
+       * Represents a single post element.
+       * @type {HTMLElement}
+       */
       const postElement = document.createElement("div");
       postElement.className = "post";
 
+      /**
+       * Formatted created date of the post.
+       * @type {string}
+       */
       const createdDate = new Date(post.created).toLocaleDateString();
 
       postElement.innerHTML = `
@@ -74,6 +130,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   };
 
+  /**
+   * Filters and displays posts based on the search input value.
+   * @function
+   * @returns {void}
+   * @example
+   * // Filters posts based on the search input value and displays the results.
+   * searchPosts();
+   */
   const searchPosts = () => {
     const query = document.getElementById("search-input").value.toLowerCase();
     const filteredPosts = postsData.filter(

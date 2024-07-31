@@ -1,7 +1,39 @@
+/**
+ * Fetches and displays the details of a specific post based on the post ID from the URL.
+ * Runs when the DOM content is fully loaded.
+ * @function
+ * @async
+ * @returns {Promise<void>} Resolves when the post details are successfully fetched and displayed, or rejects if an error occurs.
+ * @throws {Error} Throws an error if fetching the post fails or if an unexpected error occurs.
+ * @example
+ * // Automatically fetches and displays post details when the DOM content is loaded.
+ * document.addEventListener("DOMContentLoaded", async () => {
+ *     // Initialization code here
+ * });
+ */
 document.addEventListener("DOMContentLoaded", async () => {
+  /**
+   * Retrieves the post ID from the URL query parameters.
+   * @type {string|null}
+   */
   const postId = new URLSearchParams(window.location.search).get("id");
+
+  /**
+   * Reference to the container element where post details will be displayed.
+   * @type {HTMLElement|null}
+   */
   const postContainer = document.getElementById("post");
+
+  /**
+   * Retrieves the access token from localStorage.
+   * @type {string|null}
+   */
   const accessToken = localStorage.getItem("accessToken");
+
+  /**
+   * Retrieves the API key from localStorage.
+   * @type {string|null}
+   */
   const apiKey = localStorage.getItem("apiKey");
 
   if (!postId || !accessToken || !apiKey) {
@@ -10,13 +42,23 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   try {
+    /**
+     * Fetches the post details from the API.
+     * @async
+     * @function
+     * @returns {Promise<void>} Resolves when the post details are successfully fetched and displayed.
+     * @throws {Error} Throws an error if fetching the post fails.
+     * @example
+     * // Fetches post details and updates the page with the post information.
+     * await fetchPostDetails();
+     */
     const response = await fetch(
       `https://v2.api.noroff.dev/social/posts/${postId}?_author=true&_comments=true&_reactions=true`,
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${accessToken}`,
-          "X-Noroff-API-Key": apiKey,
+          Authorization: `Bearer ${accessToken}`, // Include access token for authorization
+          "X-Noroff-API-Key": apiKey, // Include API key if required by the API
           "Content-Type": "application/json",
         },
       }

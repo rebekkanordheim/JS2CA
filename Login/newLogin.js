@@ -1,10 +1,41 @@
+/**
+ * Initializes the login form and handles form submission for user login.
+ * Runs when the DOM content is fully loaded.
+ * @function
+ * @async
+ * @returns {Promise<void>} Resolves when the login process is completed, either successfully or with an error.
+ * @throws {Error} Throws an error if the login or API key creation fails or if there is an unexpected issue.
+ * @example
+ * // Automatically sets up the login form and handles submission when the DOM content is loaded.
+ * document.addEventListener("DOMContentLoaded", () => {
+ *     // Initialization code here
+ * });
+ */
 document.addEventListener("DOMContentLoaded", () => {
+  /**
+   * Reference to the login form element.
+   * @type {HTMLFormElement|null}
+   */
   const loginForm = document.querySelector(".login-form");
+
+  if (!loginForm) {
+    console.error("Login form not found.");
+    return;
+  }
 
   loginForm.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
 
+    /**
+     * User's email input from the form.
+     * @type {string}
+     */
     const email = document.getElementById("email").value.trim();
+
+    /**
+     * User's password input from the form.
+     * @type {string}
+     */
     const password = document.getElementById("password").value.trim();
 
     // Validate email
@@ -20,12 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    /**
+     * Object containing login credentials.
+     * @type {Object}
+     * @property {string} email - The user's email address.
+     * @property {string} password - The user's password.
+     */
     const loginData = {
       email: email,
       password: password,
     };
 
     try {
+      /**
+       * URL to send the login request to.
+       * @type {string}
+       */
       const loginUrl = "https://v2.api.noroff.dev/auth/login";
 
       // Login the user
@@ -45,8 +86,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // Store JWT token in localStorage
         localStorage.setItem("accessToken", loginData.data.accessToken);
 
-        // Create API Key
+        /**
+         * URL to create the API key.
+         * @type {string}
+         */
         const createApiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
+
+        // Create API Key
         const apiKeyResponse = await fetch(createApiKeyUrl, {
           method: "POST",
           headers: {

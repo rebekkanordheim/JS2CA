@@ -1,11 +1,41 @@
+/**
+ * Initializes event listeners for the create post form.
+ * Runs when the DOM content is fully loaded.
+ * @function
+ * @async
+ * @returns {void}
+ * @example
+ * // Automatically sets up the form submission handling when the DOM content is loaded.
+ * document.addEventListener("DOMContentLoaded", () => {
+ *     // Initialization code here
+ * });
+ */
 document.addEventListener("DOMContentLoaded", () => {
+  /**
+   * Reference to the create post form element.
+   * @type {HTMLFormElement|null}
+   */
   const form = document.getElementById("create-post-form");
+
+  if (!form) {
+    console.error("Create post form not found.");
+    return;
+  }
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault(); // Prevent the form from submitting the default way
 
-    const accessToken = localStorage.getItem("accessToken"); // Retrieve the access token from local storage
-    const apiKey = localStorage.getItem("apiKey"); // Retrieve the API key from local storage
+    /**
+     * Retrieves the access token from localStorage.
+     * @type {string|null}
+     */
+    const accessToken = localStorage.getItem("accessToken");
+
+    /**
+     * Retrieves the API key from localStorage.
+     * @type {string|null}
+     */
+    const apiKey = localStorage.getItem("apiKey");
 
     if (!accessToken || !apiKey) {
       console.error("No access token or API key found. Please log in.");
@@ -13,11 +43,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Retrieve the form data
+    /**
+     * @type {string}
+     */
     const title = document.getElementById("title").value;
+
+    /**
+     * @type {string}
+     */
     const body = document.getElementById("body").value;
+
+    /**
+     * @type {string}
+     */
     const mediaUrl = document.getElementById("mediaUrl").value;
 
     // Create the post object
+    /**
+     * Represents the new post to be created.
+     * @type {Object}
+     * @property {string} title - The title of the post.
+     * @property {string} body - The body content of the post.
+     * @property {Object} media - The media associated with the post.
+     * @property {string|null} media.url - The URL of the media or null if not provided.
+     * @property {string} media.alt - Alternative text for the media.
+     */
     const newPost = {
       title,
       body,

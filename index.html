@@ -18,14 +18,23 @@
   </head>
   <body>
     <div class="body-wrapper">
-      <a class="btn btn-dark" href="/">Home</a>
-      <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
-      <a class="btn btn-dark" id="register-link" href="../Register/register.html"
-        >Register</a
-      >
-      <a class="btn btn-dark" id="feed-link" href="../Feed/feed.html">Feed</a>
+      <nav class="navbar">
+        <a class="btn btn-dark" href="/">Home</a>
+        <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
+        <a class="btn btn-dark" id="register-link" href="../Register/register.html"
+          >Register</a
+        >
+        <a class="btn btn-dark" id="feed-link" href="../Feed/feed.html">Feed</a>
+      </nav>
       <h1>Hello, please choose from the above</h1>
     </div>
+    <footer class="footer">
+      <span>
+        <p>© Rebekka Nordheim 2024</p>
+      </span>
+      <button id="logout-btn-footer" class="btn btn-dark">Log out</button>
+    </footer>
+    <script src="../Logout/newLogout.js"></script>
     <script src="../Auth/auth.js"></script>
   </body>
 </html>

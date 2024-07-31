@@ -40,7 +40,10 @@ h1 {
   padding: 10px;
 }
 
-.form-btn, .btn, .btn-dark, .footer-button {
+.form-btn, 
+.btn, 
+.btn-dark, 
+.footer-button {
   padding: 10px;
   background-color: #fff;
   border-radius: 5px;
@@ -48,7 +51,10 @@ h1 {
   color: black;
 }
 
-.form-btn:hover, .btn:hover, .btn-dark:hover, .footer-button:hover {
+.form-btn:hover, 
+.btn:hover, 
+.btn-dark:hover, 
+.footer-button:hover {
   background-color: black;
   color: #fff;
 }
@@ -72,7 +78,7 @@ a {
   z-index: 1; /* Ensure the footer stays on top of other content */
 }
 
-/* POST */ /* Add these styles to your stylesheet.css */
+/* POST */
 
 /* Default grid layout for large screens */
 #posts-container {

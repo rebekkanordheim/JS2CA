@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Feed</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../stylesheet.css">
-    <script src="https://kit.fontawesome.com/775e56e9e6.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../stylesheet.css" />
+    <script
+      src="https://kit.fontawesome.com/775e56e9e6.js"
+      crossorigin="anonymous"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
     <div class="body-wrapper">
-        <nav class="navbar">
-            <a class="btn btn-dark" href="/">Home</a>
-            <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
-            <a class="btn btn-dark" id="register-link" href="../Register/register.html">Register</a>
-        </nav>
-        <h1>Feed</h1>
+      <nav class="navbar">
+        <a class="btn btn-dark" href="/">Home</a>
+        <a class="btn btn-dark" id="login-link" href="../Login/login.html">Log in</a>
+        <a class="btn btn-dark" id="register-link" href="../Register/register.html"
+          >Register</a
+        >
+      </nav>
+      <h1>Feed</h1>
 
-        <!-- Search Bar and Button -->
-        <div class="search-container">
-            <input type="text" id="search-input" class="form-control" placeholder="Search posts...">
-            <button id="search-btn" class="btn btn-primary">Search</button>
-        </div>
+      <!-- Search Bar and Button -->
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-input"
+          class="form-control"
+          placeholder="Search posts..." />
+        <button id="search-btn" class="btn btn-primary">Search</button>
+      </div>
 
-        <!-- Posts Container -->
-        <div id="posts-container" class="posts-container">
-            <!-- Posts will be dynamically inserted here -->
-        </div>
+      <!-- Posts Container -->
+      <div id="posts-container" class="posts-container">
+        <!-- Posts will be dynamically inserted here -->
+      </div>
     </div>
     <footer class="footer">
-        <span><p>© Rebekka Nordheim 2024</p></span>
-        <button id="create-post-btn" class="btn btn-dark" style="display: none">
-            <a href="../Feed/createNewPost.html" class="createPostButton">Create new post</a>
-        </button>
-        <button id="logout-btn-footer" class="btn btn-dark">Log out</button>
+      <span><p>© Rebekka Nordheim 2024</p></span>
+      <button id="create-post-btn" class="btn btn-dark" style="display: none">
+        <a href="../Feed/createNewPost.html" class="createPostButton">Create new post</a>
+      </button>
+      <button class="btn btn-dark">
+        <a href="../Profile/profile.html" class="createPostButton">Profile</a>
+      </button>
+      <button id="logout-btn-footer" class="btn btn-dark">Log out</button>
     </footer>
     <script src="../Logout/newLogout.js"></script>
     <script src="../Auth/auth.js"></script>
-    <script src="searchbar.js"></script> <!-- Include searchbar.js here -->
-</body>
+    <script src="searchbar.js"></script>
+  </body>
 </html>

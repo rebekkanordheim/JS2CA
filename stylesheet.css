@@ -8,8 +8,15 @@ body {
   padding-bottom: 60px;
 }
 
-h1, .page-title {
+h1,
+h2,
+.page-title {
   color: #fff;
+  text-align: center;
+}
+
+h3 {
+  color: #000;
   text-align: center;
 }
 
@@ -17,7 +24,7 @@ h1, .page-title {
   padding: 20px;
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(116, 116, 116, 0.476), rgba(0, 0, 0, 0.931)), url(images/backgroundimage.jpg);
+  background-image: linear-gradient(rgba(17, 17, 17, 0.733), rgba(0, 0, 0, 0.931)), url(images/backgroundimage.jpg);
   background-position: center;
   background-size: cover;
   font-family: "Nunito", sans-serif;
@@ -25,6 +32,7 @@ h1, .page-title {
 
 .navbar, .search-container, .profile-header, .profile-bio-container {
   margin-bottom: 20px;
+  display: grid;
 }
 
 .content-container, .posts-container, .register-form, .login-form, form {
@@ -84,7 +92,8 @@ form label {
   display: inline-block;
 }
 
-.posts-container, #posts-container {
+.posts-container, 
+#posts-container {
   display: grid;
   gap: 20px;
   padding: 20px;
@@ -112,9 +121,10 @@ form label {
   }
 }
 
-.post-container, .post {
-  background-color: #ffffffbf;
-  border: 2px solid white;
+.post-container, .post,
+.profile-container {
+  background-color: #ffffffc6;
+  border: 1px solid white;
   color: var(--secondary-text);
   border-radius: 5px;
   padding: 20px;
@@ -123,6 +133,23 @@ form label {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 30px 0;
+}
+.profileposts {
+/*   background-color: #ffffff6d;
+  border: 1px solid white;
+  color: var(--secondary-text);
+  border-radius: 5px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0; */
+  border: 1px solid white;
+  border-radius: 5px;
+  padding: 20px;
 }
 
 .footer {

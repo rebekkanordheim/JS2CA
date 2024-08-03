@@ -107,8 +107,36 @@ document.addEventListener("DOMContentLoaded", () => {
           console.log("API Key created successfully:", apiKeyData);
           localStorage.setItem("apiKey", apiKeyData.data.key);
 
-          // Redirect to the feed or another protected page
-          window.location.href = "../Feed/feed.html";
+          // Retrieve profile data
+          const profileUrl = `https://v2.api.noroff.dev/social/profiles/${loginData.data.name}`;
+          const profileResponse = await fetch(profileUrl, {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${loginData.data.accessToken}`,
+              "Content-Type": "application/json",
+              "X-Noroff-API-Key": apiKeyData.data.key, // Correct header name
+            },
+          });
+
+          if (profileResponse.ok) {
+            const profileData = await profileResponse.json();
+            console.log("Profile data retrieved:", profileData);
+
+            // Store user profile information in localStorage
+            localStorage.setItem("name", profileData.data.name);
+            localStorage.setItem("email", profileData.data.email);
+            localStorage.setItem("avatarImage", profileData.data.avatar.url);
+
+            // Redirect to the feed or another protected page
+            window.location.href = "../Feed/feed.html";
+          } else {
+            const profileErrorData = await profileResponse.json();
+            console.error("Failed to fetch profile data:", profileErrorData);
+            throw new Error(
+              "Failed to fetch profile data. " +
+                (profileErrorData.errors[0]?.message || "")
+            );
+          }
         } else {
           const apiKeyErrorData = await apiKeyResponse.json();
           console.error("Failed to create API Key:", apiKeyErrorData);

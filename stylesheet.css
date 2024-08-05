@@ -1,22 +1,19 @@
-html, body {
+html,
+body {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
-}
-
-body {
   padding-bottom: 60px;
+  font-family: "Nunito", sans-serif;
 }
 
 h1,
 h2,
+h3,
+p,
+small,
 .page-title {
   color: #fff;
-  text-align: center;
-}
-
-h3 {
-  color: #000;
   text-align: center;
 }
 
@@ -24,29 +21,37 @@ h3 {
   padding: 20px;
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(rgba(17, 17, 17, 0.733), rgba(0, 0, 0, 0.931)), url(images/backgroundimage.jpg);
-  background-position: center;
-  background-size: cover;
-  font-family: "Nunito", sans-serif;
+  background: linear-gradient(rgba(17, 17, 17, 0.733), rgba(0, 0, 0, 0.931)),
+    url(images/backgroundimage.jpg) center/cover;
 }
 
-.navbar, .search-container, .profile-header, .profile-bio-container {
+.navbar,
+.search-container,
+.profile-header,
+.profile-bio-container {
   margin-bottom: 20px;
   display: grid;
 }
 
-.content-container, .posts-container, .register-form, .login-form, form {
+.content-container,
+.posts-container,
+.register-form,
+.login-form,
+form {
   background-color: rgba(255, 255, 255, 0.431);
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: auto;
 }
 
-.content-container, .posts-container {
+.content-container,
+.posts-container {
   max-width: 800px;
 }
 
-form, .register-form, .login-form {
+form,
+.register-form,
+.login-form {
   width: 70%;
 }
 
@@ -58,7 +63,7 @@ form label {
 
 .form-input {
   margin-bottom: 15px;
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid #ccc;
   padding: 10px;
   width: 100%;
@@ -84,7 +89,6 @@ form label {
 
 .search-container input {
   width: calc(100% - 100px);
-  display: inline-block;
   margin-right: 10px;
 }
 
@@ -92,63 +96,83 @@ form label {
   display: inline-block;
 }
 
-.posts-container, 
+.posts-container,
 #posts-container {
   display: grid;
   gap: 20px;
   padding: 20px;
-}
-
-.posts-container {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-#posts-container {
   grid-template-columns: repeat(3, 1fr);
 }
 
 /* Adjust layout for medium screens */
 @media (max-width: 1355px) and (min-width: 901px) {
-  .posts-container, #posts-container {
+  .posts-container,
+  #posts-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 /* Adjust layout for small screens */
 @media (max-width: 900px) {
-  .posts-container, #posts-container {
+  .posts-container,
+  #posts-container {
     grid-template-columns: 1fr;
   }
 }
 
-.post-container, .post,
+.post-container,
+.post,
 .profile-container {
-  background-color: #ffffffc6;
-  border: 1px solid white;
+  background-color: #00000068;
   color: var(--secondary-text);
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 20px;
   position: relative;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 30px 0;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 720px;
+  height: 100%;
 }
+
+/* Wider screens adjustments */
+@media (min-width: 900px) {
+  .post-container,
+  .profile-container {
+    width: 80%;
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .post-container,
+  .profile-container {
+    width: 70%;
+    max-width: 1000px;
+  }
+}
+
+.post > * {
+  width: 100%;
+  flex: 1;
+}
+
+/* Set the dimensions for post images */
+.post img {
+  max-width: 100%;
+  max-height: 150px; /* Set desired height */
+  object-fit: cover; /* Maintain aspect ratio and cover the given area */
+  border-radius: 3px;
+}
+
 .profileposts {
-/*   background-color: #ffffff6d;
   border: 1px solid white;
-  color: var(--secondary-text);
-  border-radius: 5px;
-  padding: 20px;
-  position: relative;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px 0; */
-  border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 20px;
 }
 
@@ -166,25 +190,36 @@ form label {
   height: 60px;
   z-index: 1;
 }
+footer p {
+  color: #00000068;
+}
 
 a {
   text-decoration: none;
 }
 
-.button, .btn, .btn-dark, .form-btn {
-  padding: 10px;
+.button,
+.btn,
+.btn-dark,
+.form-btn {
+  display: inline-block; 
+  padding: 0; 
+  width: 120px;
+  height: 40px; 
   background-color: #fff;
-  border-radius: 5px;
+  border-radius: 3px;
   margin: 10px;
   color: black;
-  text-decoration: none;
-  display: inline-block;
   text-align: center;
+  line-height: 40px;
   border: 1px solid transparent;
   transition: background-color 0.3s, color 0.3s;
 }
 
-.button:hover, .btn:hover, .btn-dark:hover, .form-btn:hover {
+.button:hover,
+.btn:hover,
+.btn-dark:hover,
+.form-btn:hover {
   background-color: black;
   color: #fff;
   cursor: pointer;

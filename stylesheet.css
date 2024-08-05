@@ -142,7 +142,6 @@ form label {
   width: 100%;
   max-width: 720px;
   height: 100%;
-  border: 1px solid rgba(255, 255, 255, 0.448);
 }
 
 /* Wider screens adjustments */
@@ -222,8 +221,15 @@ a {
   transition: background-color 0.3s, color 0.3s;
 }
 
+.btn a,
+.btn-dark a {
+  color: black;
+}
+
 .button:hover,
 .btn:hover,
+.btn a:hover,
+.btn-dark a:hover,
 .btn-dark:hover,
 .form-btn:hover {
   background-color: black;

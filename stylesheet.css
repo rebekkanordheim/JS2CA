@@ -61,7 +61,8 @@ form label {
   color: #333;
 }
 
-.form-input {
+.form-input,
+.input {
   margin-bottom: 15px;
   border-radius: 3px;
   border: 1px solid #ccc;
@@ -138,14 +139,16 @@ form label {
   width: 100%;
   max-width: 720px;
   height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.448);
 }
 
 /* Wider screens adjustments */
 @media (min-width: 900px) {
   .post-container,
   .profile-container {
-    width: 80%;
-    max-width: 800px;
+    width: 100%;
+    height: 100%;
+    max-width: 720px;
   }
 }
 
@@ -153,7 +156,7 @@ form label {
   .post-container,
   .profile-container {
     width: 70%;
-    max-width: 1000px;
+    max-width: 720px;
   }
 }
 
@@ -202,10 +205,10 @@ a {
 .btn,
 .btn-dark,
 .form-btn {
-  display: inline-block; 
-  padding: 0; 
+  display: inline-block;
+  padding: 0;
   width: 120px;
-  height: 40px; 
+  max-height: 40px;
   background-color: #fff;
   border-radius: 3px;
   margin: 10px;

@@ -38,7 +38,7 @@ small,
 .register-form,
 .login-form,
 form {
-  background-color: rgba(255, 255, 255, 0.431);
+  background-color: #00000068;
   padding: 20px;
   border-radius: 3px;
   margin: auto;
@@ -58,7 +58,7 @@ form,
 form label {
   display: block;
   margin-bottom: 5px;
-  color: #333;
+  color: white;
 }
 
 .form-input,
@@ -86,6 +86,9 @@ form label {
 .search-container {
   display: flex;
   align-items: baseline;
+  margin: auto;
+  width: 100%;
+  max-width: 500px;
 }
 
 .search-container input {

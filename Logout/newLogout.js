@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
    * Reference to the logout button in the footer.
    * @type {HTMLElement|null}
    */
-  const logoutBtnFooter = document.getElementById("logout-btn-footer");
+  const logoutBtnFooter = document.getElementById("logout-btn");
 
   /**
    * Reference to the original logout button, if needed.

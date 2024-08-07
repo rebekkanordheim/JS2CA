@@ -1,28 +1,5 @@
-/**
- * Fetches and displays posts from the API when the DOM content is fully loaded.
- * It checks for an access token and API key, retrieves posts, and populates
- * the posts container with the fetched data.
- * @function
- * @async
- * @returns {void}
- * @throws {Error} Throws an error if fetching posts fails or an unexpected error occurs.
- * @example
- * // Automatically fetches and displays posts when the DOM content is loaded.
- * document.addEventListener("DOMContentLoaded", async () => {
- *     // Initialization code here
- * });
- */
 document.addEventListener("DOMContentLoaded", async () => {
-  /**
-   * Retrieves the access token from localStorage.
-   * @type {string|null}
-   */
   const accessToken = localStorage.getItem("accessToken");
-
-  /**
-   * Retrieves the API key from localStorage.
-   * @type {string|null}
-   */
   const apiKey = localStorage.getItem("apiKey");
 
   if (!accessToken || !apiKey) {
@@ -36,8 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${accessToken}`, // Include access token for authorization
-          "X-Noroff-API-Key": apiKey, // Include API key if required by the API
+          Authorization: `Bearer ${accessToken}`,
+          "X-Noroff-API-Key": apiKey,
           "Content-Type": "application/json",
         },
       }
@@ -47,26 +24,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       const data = await response.json();
       console.log("Posts data:", data);
 
-      // Populate the posts container
-      /**
-       * Reference to the posts container element.
-       * @type {HTMLElement|null}
-       */
       const postsContainer = document.getElementById("posts-container");
-      postsContainer.innerHTML = ""; // Clear existing posts
+      postsContainer.innerHTML = "";
 
       data.data.forEach((post) => {
-        /**
-         * Represents a single post element.
-         * @type {HTMLElement}
-         */
         const postElement = document.createElement("div");
-        postElement.className = "post"; // Apply the post class
+        postElement.className = "post";
 
-        // Format the created date
-        /**
-         * @type {string}
-         */
         const createdDate = new Date(post.created).toLocaleDateString();
 
         postElement.innerHTML = `
@@ -88,7 +52,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     } else {
       const errorData = await response.json();
       console.error("Failed to fetch posts:", errorData);
-      // Display an error message to the user
       const postsContainer = document.getElementById("posts-container");
       postsContainer.innerHTML = `<p>Failed to fetch posts: ${
         errorData.errors[0].message || "Unknown error"
@@ -96,7 +59,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   } catch (error) {
     console.error("Error fetching posts:", error);
-    // Display an error message to the user
     const postsContainer = document.getElementById("posts-container");
     postsContainer.innerHTML = `<p>Error fetching posts: ${
       error.message || "Unknown error"

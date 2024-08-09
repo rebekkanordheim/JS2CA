@@ -38,8 +38,8 @@ export function newLogin() {
       }
 
       const loginData = {
-        email: email,
-        password: password,
+        email,
+        password,
       };
 
       try {
@@ -54,45 +54,55 @@ export function newLogin() {
         });
 
         if (loginResponse.ok) {
-          const loginData = await loginResponse.json();
-          console.log("Login successful:", loginData);
+          const {
+            data: { accessToken, name },
+          } = await loginResponse.json();
+          console.log("Login successful:", { accessToken, name });
           alert("Login successful!");
 
-          localStorage.setItem("accessToken", loginData.data.accessToken);
+          localStorage.setItem("accessToken", accessToken);
 
           const createApiKeyUrl = "https://v2.api.noroff.dev/auth/create-api-key";
 
           const apiKeyResponse = await fetch(createApiKeyUrl, {
             method: "POST",
             headers: {
-              Authorization: `Bearer ${loginData.data.accessToken}`,
+              Authorization: `Bearer ${accessToken}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ name: "My API Key" }),
           });
 
           if (apiKeyResponse.ok) {
-            const apiKeyData = await apiKeyResponse.json();
-            console.log("API Key created successfully:", apiKeyData);
-            localStorage.setItem("apiKey", apiKeyData.data.key);
+            const {
+              data: { key },
+            } = await apiKeyResponse.json();
+            console.log("API Key created successfully:", { key });
+            localStorage.setItem("apiKey", key);
 
-            const profileUrl = `https://v2.api.noroff.dev/social/profiles/${loginData.data.name}`;
+            const profileUrl = `https://v2.api.noroff.dev/social/profiles/${name}`;
             const profileResponse = await fetch(profileUrl, {
               method: "GET",
               headers: {
-                Authorization: `Bearer ${loginData.data.accessToken}`,
+                Authorization: `Bearer ${accessToken}`,
                 "Content-Type": "application/json",
-                "X-Noroff-API-Key": apiKeyData.data.key,
+                "X-Noroff-API-Key": key,
               },
             });
 
             if (profileResponse.ok) {
-              const profileData = await profileResponse.json();
-              console.log("Profile data retrieved:", profileData);
+              const {
+                data: {
+                  name,
+                  email,
+                  avatar: { url: avatarImage },
+                },
+              } = await profileResponse.json();
+              console.log("Profile data retrieved:", { name, email, avatarImage });
 
-              localStorage.setItem("name", profileData.data.name);
-              localStorage.setItem("email", profileData.data.email);
-              localStorage.setItem("avatarImage", profileData.data.avatar.url);
+              localStorage.setItem("name", name);
+              localStorage.setItem("email", email);
+              localStorage.setItem("avatarImage", avatarImage);
 
               window.location.href = "../Feed/feed.html";
             } else {

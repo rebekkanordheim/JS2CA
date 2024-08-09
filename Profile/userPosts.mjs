@@ -1,3 +1,14 @@
+/**
+ * Fetches and displays user posts when the DOM content is fully loaded.
+ * Handles displaying posts, editing, and deleting posts with the respective functionalities.
+ * Runs when the DOM content is fully loaded.
+ * @function
+ * @async
+ * @returns {void}
+ * @example
+ * // Automatically fetches and displays user posts, and sets up edit and delete functionalities when the DOM content is loaded.
+ * userPosts();
+ */
 export async function userPosts() {
   document.addEventListener("DOMContentLoaded", () => {
     const name = localStorage.getItem("name");

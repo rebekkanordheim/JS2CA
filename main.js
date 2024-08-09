@@ -1,0 +1,21 @@
+import { newRegister } from "./Register/newRegister.mjs";
+import { newLogin } from "./Login/newLogin.mjs";
+import { newLogout } from "./Logout/newLogout.mjs";
+import { profile } from "./Profile/profile.mjs";
+import { userPosts } from "./Profile/userPosts.mjs";
+import { newFeed } from "./Feed/newFeed.mjs";
+import { createNewPost } from "./Feed/createNewPost.mjs";
+import { searchbar } from "./Feed/searchbar.mjs";
+import { filter } from "./Feed/filter.mjs";
+import { viewPost } from "./Feed/viewPost.mjs";
+
+newRegister();
+newLogin();
+newLogout();
+profile();
+userPosts();
+newFeed();
+createNewPost();
+searchbar();
+filter();
+viewPost();
